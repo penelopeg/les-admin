@@ -15,6 +15,45 @@ export const PAGES_MENU = [
           }
         }
       },
+       {
+        path: 'news',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Gerir Notícias', // menu title
+            icon: 'ion-compose', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'events',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Gerir Eventos', // menu title
+            icon: 'ion-calendar', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'timeschedule',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Gerir Horários', // menu title
+            icon: 'ion-calendar', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
       {
         path: 'dashboard',
         data: {
