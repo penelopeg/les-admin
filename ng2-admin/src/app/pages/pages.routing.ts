@@ -19,6 +19,7 @@ export const routes: Routes = [
     component: Pages,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'centerinfo',  loadChildren: 'app/pages/centerinfo/centerinfo.module#CenterinfoModule' },
       { path: 'timeschedule',  loadChildren: 'app/pages/timeschedule/timeschedule.module#TimescheduleModule' },
       { path: 'events',  loadChildren: 'app/pages/events/events.module#EventsModule' },
       { path: 'news',  loadChildren: 'app/pages/news/news.module#NewsModule' },     

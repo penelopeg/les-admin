@@ -46,7 +46,20 @@ export const PAGES_MENU = [
         data: { // custom menu declaration
           menu: {
             title: 'Gerir Horários', // menu title
-            icon: 'ion-calendar', // menu icon
+            icon: 'ion-clock', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'centerinfo',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Gerir Informação', // menu title
+            icon: 'ion-settings', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
