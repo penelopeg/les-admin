@@ -84,25 +84,11 @@ export class NewsService {
     }
   ];
 
-//Get tags from api
-//  getTags() {
-//    return this.http.get(`https://ccva.jordao.xyz/MjY2ODU5NDky/news`)
-//    .map((res:Response) => res.json());
-//  }
 
-   getTags(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.http.get('https://ccva.jordao.xyz/MjY2ODU5NDky/news').map((res:Response) => res.json()));
-      }, 2000);
-    });
+   getNews() {
+    return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/news')
+    .map((res:Response) => res.json());
   }
 
-  getData(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.smartTableData);
-      }, 2000);
-    });
-  }
+
 }

@@ -5,7 +5,10 @@ import { routing } from './news.routing';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import {NewsService} from './news.service';
+import { NewsService } from './news.service';
+import { HttpModule } from '@angular/http';
+
+
 
 @NgModule({
   imports: [
@@ -13,7 +16,8 @@ import {NewsService} from './news.service';
     routing,
     FormsModule,
     NgaModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    HttpModule
   ],
   declarations: [
     NewsComponent

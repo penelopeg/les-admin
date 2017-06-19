@@ -46,17 +46,13 @@ export class NewsComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(protected service: NewsService) {
-    this.service.getData().then((data) => {
-      this.source.load(data);
+    constructor(protected service: NewsService) {
+    this.service.getNews().subscribe((value) => {
+       this.source.load(JSON.parse(value));
+    },(error) => {
+      console.log(error);
     });
-  }
-
-    // constructor(protected service: NewsService) {
-    // this.service.getTags().then((data) => {
-    //   this.source.load(data);
-    // });
-    // }
+    }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Quer mesmo eliminar a not]icia?')) {
