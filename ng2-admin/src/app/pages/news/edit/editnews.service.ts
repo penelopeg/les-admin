@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 @Injectable()
-export class NewsService {
+export class EditnewsService {
     constructor (
     private http: Http
   ) {}
 
-   getNews() {
-    return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/news')
+   getNews(id) {
+    return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/news/' + id)
     .map((res:Response) => res.json());
   }
 

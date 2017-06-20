@@ -1,14 +1,12 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { FormsModule as AngularFormsModule } from '@angular/forms';
-import { NgaModule } from '../../theme/nga.module';
+import { NgaModule } from '../../../theme/nga.module';
 import { HttpModule } from '@angular/http';
-import { routing }       from './centerinfo.routing';
-import { CenterinfoService } from './centerinfo.service';
+import { routing }       from './editnews.routing';
+import { EditnewsService } from './editnews.service';
 import { RatingModule } from 'ng2-bootstrap';
-import { CenterinfoComponent } from './centerinfo.component';
-
-
+import { EditnewsComponent } from './editnews.component';
 
 @NgModule({
   imports: [
@@ -20,9 +18,9 @@ import { CenterinfoComponent } from './centerinfo.component';
     HttpModule
   ],
   declarations: [
-    CenterinfoComponent
+    EditnewsComponent
   ],
-  providers: [CenterinfoService]
+  providers: [EditnewsService]
 })
-export class CenterinfoModule {
+export class EditnewsModule {
 }

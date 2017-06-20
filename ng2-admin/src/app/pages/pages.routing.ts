@@ -1,4 +1,4 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
 // noinspection TypeScriptValidateTypes
@@ -14,16 +14,27 @@ export const routes: Routes = [
     path: 'register',
     loadChildren: 'app/pages/register/register.module#RegisterModule'
   },
+
   {
     path: 'pages',
     component: Pages,
     children: [
+      {
+        path: 'news/add',
+        loadChildren: 'app/pages/news/add/addnew.module#AddnewModule'
+      },
+      {
+        path: 'news/edit/:id',
+        loadChildren: 'app/pages/news/edit/editnews.module#EditnewsModule'
+      },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'centerinfo',  loadChildren: 'app/pages/centerinfo/centerinfo.module#CenterinfoModule' },
-      { path: 'timeschedule',  loadChildren: 'app/pages/timeschedule/timeschedule.module#TimescheduleModule' },
-      { path: 'events',  loadChildren: 'app/pages/events/events.module#EventsModule' },
-      { path: 'news',  loadChildren: 'app/pages/news/news.module#NewsModule' },     
-      { path: 'activities',  loadChildren: 'app/pages/activities/activities.module#ActivitiesModule' },
+      { path: 'social', loadChildren: 'app/pages/social/social.module#SocialModule' },
+      { path: 'pricing', loadChildren: 'app/pages/pricing/pricing.module#PricingModule' },
+      { path: 'centerinfo', loadChildren: 'app/pages/centerinfo/centerinfo.module#CenterinfoModule' },
+      { path: 'timeschedule', loadChildren: 'app/pages/timeschedule/timeschedule.module#TimescheduleModule' },
+      { path: 'events', loadChildren: 'app/pages/events/events.module#EventsModule' },
+      { path: 'news', loadChildren: 'app/pages/news/news.module#NewsModule' },
+      { path: 'activities', loadChildren: 'app/pages/activities/activities.module#ActivitiesModule' },
       { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'editors', loadChildren: 'app/pages/editors/editors.module#EditorsModule' },
       { path: 'components', loadChildren: 'app/pages/components/components.module#ComponentsModule' },

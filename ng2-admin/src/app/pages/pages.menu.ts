@@ -15,7 +15,7 @@ export const PAGES_MENU = [
           }
         }
       },
-       {
+      {
         path: 'news',  // path for our page
         data: { // custom menu declaration
           menu: {
@@ -42,6 +42,19 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'centerinfo',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Gerir Informação', // menu title
+            icon: 'ion-settings', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
         path: 'timeschedule',  // path for our page
         data: { // custom menu declaration
           menu: {
@@ -55,11 +68,24 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'centerinfo',  // path for our page
+        path: 'pricing',  // path for our page
         data: { // custom menu declaration
           menu: {
-            title: 'Gerir Informação', // menu title
-            icon: 'ion-settings', // menu icon
+            title: 'Gerir Preçário', // menu title
+            icon: 'ion-cash', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'social',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Gerir Redes Sociais', // menu title
+            icon: 'ion-person-stalker', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
@@ -259,52 +285,52 @@ export const PAGES_MENU = [
           }
         ]
       },
-     /** {
-        path: 'maps',
-        data: {
-          menu: {
-            title: 'Maps',
-            icon: 'ion-ios-location-outline',
-            selected: false,
-            expanded: false,
-            order: 600,
-          }
-        },
-        children: [
-          {
-            path: 'googlemaps',
-            data: {
-              menu: {
-                title: 'Google Maps',
-              }
-            }
-          },
-          {
-            path: 'leafletmaps',
-            data: {
-              menu: {
-                title: 'Leaflet Maps',
-              }
-            }
-          },
-          {
-            path: 'bubblemaps',
-            data: {
-              menu: {
-                title: 'Bubble Maps',
-              }
-            }
-          },
-          {
-            path: 'linemaps',
-            data: {
-              menu: {
-                title: 'Line Maps',
-              }
-            }
-          }
-        ]
-      },*/
+      /** {
+         path: 'maps',
+         data: {
+           menu: {
+             title: 'Maps',
+             icon: 'ion-ios-location-outline',
+             selected: false,
+             expanded: false,
+             order: 600,
+           }
+         },
+         children: [
+           {
+             path: 'googlemaps',
+             data: {
+               menu: {
+                 title: 'Google Maps',
+               }
+             }
+           },
+           {
+             path: 'leafletmaps',
+             data: {
+               menu: {
+                 title: 'Leaflet Maps',
+               }
+             }
+           },
+           {
+             path: 'bubblemaps',
+             data: {
+               menu: {
+                 title: 'Bubble Maps',
+               }
+             }
+           },
+           {
+             path: 'linemaps',
+             data: {
+               menu: {
+                 title: 'Line Maps',
+               }
+             }
+           }
+         ]
+       },*/
       {
         path: '',
         data: {

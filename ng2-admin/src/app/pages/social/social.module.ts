@@ -1,11 +1,11 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { TimescheduleComponent } from './timeschedule.component';
-import { routing } from './timeschedule.routing';
+import { SocialComponent } from './social.component';
+import { routing } from './social.routing';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { TimescheduleService } from './timeschedule.service';
+import {SocialService} from './social.service';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -18,8 +18,8 @@ import { HttpModule } from '@angular/http';
     HttpModule
   ],
   declarations: [
-   TimescheduleComponent
+    SocialComponent
   ],
-  providers: [TimescheduleService]
+  providers: [SocialService]
 })
-export class TimescheduleModule {}
+export class SocialModule {}

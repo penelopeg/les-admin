@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {EventsService} from './events.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {EventsService} from './events.service';
     routing,
     FormsModule,
     NgaModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    HttpModule
   ],
   declarations: [
     EventsComponent

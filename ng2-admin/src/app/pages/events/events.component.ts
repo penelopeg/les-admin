@@ -31,11 +31,11 @@ export class EventsComponent {
         title: 'ID',
         type: 'number'
       },
-      title: {
+      name: {
         title: 'Título do Evento',
         type: 'string'
       },
-      description: {
+      desc: {
         title: 'Descrição',
         type: 'string'
       },
@@ -50,11 +50,21 @@ export class EventsComponent {
   };
 
   source: LocalDataSource = new LocalDataSource();
-
+  events = [];
   constructor(protected service: EventsService) {
-    this.service.getData().then((data) => {
-      this.source.load(data);
+    // this.service.getEvents().subscribe((value) => {
+    //   this.source.load(JSON.parse(value));
+    // }, (error) => {
+    //   console.log(error);
+    // });
+    this.service.getEvents().subscribe((value) => {
+      JSON.parse(value).map((item) => {
+        this.events.push(item);
+      });
+    }, (error) => {
+      console.log(error);
     });
+
   }
 
   onDeleteConfirm(event): void {

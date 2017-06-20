@@ -1,8 +1,38 @@
 <div class="widgets">
 
-  <div class="row">
+  <!--<div class="row">
     <ba-card title="Eventos" baCardClass="with-scroll">
       <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+    </ba-card>
+  </div>-->
+ <div class="row">
+    <ba-card title="Eventos" baCardClass="with-scroll">
+      <!--<div class="vertical-scroll">-->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="table-id">#</th>
+              <th>Nome do Evento</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="ion-ios-plus-outline"></span></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr *ngFor="let item of events">
+              <td><span class="ion-edit"></span></td>
+              <td class="table-id">{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.e_time }}</td>
+            </tr>
+          </tbody>
+        </table>
+      <!--</div>-->
     </ba-card>
   </div>
 

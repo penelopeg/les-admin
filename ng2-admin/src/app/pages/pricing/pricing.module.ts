@@ -1,11 +1,11 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { TimescheduleComponent } from './timeschedule.component';
-import { routing } from './timeschedule.routing';
+import { PricingComponent } from './pricing.component';
+import { routing } from './pricing.routing';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { TimescheduleService } from './timeschedule.service';
+import {PricingService} from './pricing.service';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -18,8 +18,8 @@ import { HttpModule } from '@angular/http';
     HttpModule
   ],
   declarations: [
-   TimescheduleComponent
+    PricingComponent
   ],
-  providers: [TimescheduleService]
+  providers: [PricingService]
 })
-export class TimescheduleModule {}
+export class PricingModule {}

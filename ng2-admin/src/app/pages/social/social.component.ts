@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { TimescheduleService } from './timeschedule.service';
+import {Component} from '@angular/core';
+import { SocialService } from './social.service';
 import { LocalDataSource } from 'ng2-smart-table';
 
-import 'style-loader!./timeschedule.scss';
+import 'style-loader!./social.scss';
 
 @Component({
-  selector: 'timeschedule',
-  templateUrl: 'timeschedule.html'
+  selector: 'social',
+  templateUrl: 'social.html'
 })
-export class TimescheduleComponent {
-  query: string = '';
+export class SocialComponent {
+    query: string = '';
 
   settings = {
     add: {
@@ -27,25 +27,24 @@ export class TimescheduleComponent {
       confirmDelete: true
     },
     columns: {
-      day: {
-        title: 'Dia',
+      name: {
+        title: 'Nome da rede social',
         type: 'string'
       },
-      opening_hours: {
-        title: 'Hora de abertura',
-        type: 'time'
-      },
-      closing_hours: {
-        title: 'Hora de fecho',
-        type: 'time'
+      url: {
+        title: 'URL',
+        type: 'string'
       }
     }
+    /*
+  social to tags
+    */
   };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(protected service: TimescheduleService) {
-    this.service.getSchedule().subscribe((value) => {
+  constructor(protected service: SocialService) {
+    this.service.getSocial().subscribe((value) => {
       this.source.load(JSON.parse(value));
     }, (error) => {
       console.log(error);
@@ -53,7 +52,7 @@ export class TimescheduleComponent {
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Quer mesmo eliminar o horário?')) {
+    if (window.confirm('Quer mesmo eliminar a rede social?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
