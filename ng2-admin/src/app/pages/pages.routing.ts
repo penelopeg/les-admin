@@ -27,6 +27,14 @@ export const routes: Routes = [
         path: 'news/edit/:id',
         loadChildren: 'app/pages/news/edit/editnews.module#EditnewsModule'
       },
+      {
+        path: 'events/add',
+        loadChildren: 'app/pages/events/add/addevent.module#AddeventModule'
+      },
+      {
+        path: 'events/edit/:id',
+        loadChildren: 'app/pages/events/edit/editevent.module#EditeventModule'
+      },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'social', loadChildren: 'app/pages/social/social.module#SocialModule' },
       { path: 'pricing', loadChildren: 'app/pages/pricing/pricing.module#PricingModule' },

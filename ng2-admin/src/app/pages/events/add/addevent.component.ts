@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-// import { AddnewService } from './addnew.service';
-import 'style-loader!../news.scss';
+// import { AddeventService } from './addevent.service';
+import 'style-loader!../events.scss';
 
 @Component({
-  selector: 'addnew',
-  templateUrl: './addnew.html',
+  selector: 'addevent',
+  templateUrl: './addevent.html',
 })
-export class AddnewComponent {
+export class AddeventComponent {
   content = '';
   title = '';
   tags = [];
@@ -14,7 +14,7 @@ export class AddnewComponent {
 constructor() {
 
 }
-  // constructor(protected service: AddnewService) {
+  // constructor(protected service: AddeventService) {
   //   //get info
   //   this.service.getInfo().subscribe((value) => {
   //     this.info = JSON.parse(value)[0].description;

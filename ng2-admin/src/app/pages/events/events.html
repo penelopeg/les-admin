@@ -19,13 +19,13 @@
           </thead>
           <tbody>
             <tr>
-              <td><span class="ion-ios-plus-outline"></span></td>
+              <td><a href="#/pages/events/add"><span class="ion-ios-plus-outline"></span></a></td>
               <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr *ngFor="let item of events">
-              <td><span class="ion-edit"></span></td>
+              <td><a href="#/pages/events/edit/{{item.id}}"><span class="ion-edit"></span></a></td>
               <td class="table-id">{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.e_time }}</td>

@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
-import { EditnewsService } from './editnews.service';
+import { EditeventService } from './editevent.service';
 import { ActivatedRoute } from "@angular/router";
 
-import 'style-loader!../news.scss';
+import 'style-loader!../events.scss';
 
 @Component({
-  selector: 'editnews',
-  templateUrl: './editnews.html',
+  selector: 'editevent',
+  templateUrl: './editevent.html',
 
 })
-export class EditnewsComponent {
-  content = '';
-  title = '';
+export class EditeventComponent {
+  name = '';
+  desc = '';
+  e_time ='';
   tags = [];
 
-  constructor(protected service: EditnewsService, private _routeParams: ActivatedRoute) {
+  constructor(protected service: EditeventService, private _routeParams: ActivatedRoute) {
     this._routeParams.params.subscribe(params => {
       this.service.getAllTags().subscribe((value) => {
         //get all tags
@@ -23,10 +24,11 @@ export class EditnewsComponent {
         console.log(error);
       });
 
-      this.service.getNews(params['id']).subscribe((value) => {
+      this.service.getEvents(params['id']).subscribe((value) => {
         var item = JSON.parse(value);
-        this.content = item[0].content;
-        this.title = item[0].title;
+        this.desc = item[0].desc;
+        this.name = item[0].name;
+        this.e_time = item[0].e_time; 
        //remove
         this.tags = JSON.parse(item[0].tags);
          //say which tags are selected

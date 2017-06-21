@@ -57,3 +57,11 @@ nav.ng2-smart-pagination-nav {
   display: flex;
   justify-content: center;
 }
+
+select.form-control[multiple] {
+  overflow-y: scroll;
+}
+
+select.form-control {
+  color: $default;
+}
