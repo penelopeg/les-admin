@@ -52,7 +52,7 @@ export class PricingComponent {
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Quer mesmo eliminar o evento?')) {
+    if (window.confirm('Quer mesmo eliminar o preçário?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();

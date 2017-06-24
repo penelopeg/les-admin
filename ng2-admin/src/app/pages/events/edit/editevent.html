@@ -1,6 +1,6 @@
 <div>
   <ba-card title="Editar Evento" baCardClass="with-scroll">
-    <form>
+    <form method="POST">
       <div class="form-group">
         <label for="name">Nome do Evento</label>
         <input type="text" class="form-control" id="name" placeholder="Nome do Evento" value="{{ name }}">
@@ -9,9 +9,9 @@
         <label for="desc">Descrição</label>
         <textarea class="form-control" id="desc" placeholder="Descrição">{{ desc }}</textarea>
       </div>
-            <div class="form-group">
+      <div class="form-group">
         <label for="e_time">Hora do Evento</label>
-        <textarea class="form-control" id="e_time" placeholder="Hora do Evento">{{ e_time }}</textarea>
+        <input type="text" class="form-control" id="e_time" placeholder="Hora do Evento" value="{{ e_time }}">
       </div>
       <!--add tags-->
       <div class="form-group">
@@ -20,9 +20,14 @@
           <option *ngFor="let item of tags" value="{{ item.id }}" [attr.selected]="item.selected == 1 ? true: null">{{ item.name }}</option>
         </select>
       </div>
+        <div class="form-group">
+      <ba-card title="Picture Uploader" baCardClass="with-scroll">
+        <ba-picture-uploader></ba-picture-uploader>
+      </ba-card>
+      </div>
       <button type="submit" class="btn btn-success">Guardar</button>
       <button class="btn btn-danger">Apagar</button>
     </form>
-    
+
   </ba-card>
 </div>

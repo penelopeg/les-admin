@@ -36,6 +36,7 @@ export const routes: Routes = [
         loadChildren: 'app/pages/events/edit/editevent.module#EditeventModule'
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+       { path: 'feedback', loadChildren: 'app/pages/feedback/feedback.module#FeedbackModule' },
       { path: 'social', loadChildren: 'app/pages/social/social.module#SocialModule' },
       { path: 'pricing', loadChildren: 'app/pages/pricing/pricing.module#PricingModule' },
       { path: 'centerinfo', loadChildren: 'app/pages/centerinfo/centerinfo.module#CenterinfoModule' },

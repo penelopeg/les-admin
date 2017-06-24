@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
-export class EditeventService {
+export class AddeventService {
     constructor (
     private http: Http
   ) {}
@@ -17,15 +17,11 @@ export class EditeventService {
     .map((res:Response) => res.json());
   }
 
-
-  // updateEvent(event, event_id) {
+  //  createEvent(event) {
   //   let headers = new Headers({ 'Content-Type': 'application/json' });
   //   let options = new RequestOptions({ headers: headers });
   //   let body = JSON.stringify(event);
-  //   return this.http.put('http://ccva.jordao.xyz/MjY2ODU5NDky/events/' + event_id, body, options ).map((res: Response) => res.json());
-  // }
-  // deleteEvent(event_id) {
-  //   return this.http.delete('http://ccva.jordao.xyz/MjY2ODU5NDky/events/' + event_id);
+  //   return this.http.post('http://ccva.jordao.xyz/MjY2ODU5NDky/events/', body, options ).map((res: Response) => res.json());
   // }
 
 }

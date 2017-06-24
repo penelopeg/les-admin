@@ -19,7 +19,7 @@ export class EditeventComponent {
     this._routeParams.params.subscribe(params => {
       this.service.getAllTags().subscribe((value) => {
         //get all tags
-        this.tags = value;
+        this.tags = JSON.parse(value);
       }, (error) => {
         console.log(error);
       });
@@ -29,8 +29,6 @@ export class EditeventComponent {
         this.desc = item[0].desc;
         this.name = item[0].name;
         this.e_time = item[0].e_time; 
-       //remove
-        this.tags = JSON.parse(item[0].tags);
          //say which tags are selected
         var selectedTags = JSON.parse(item[0].tags);
         this.tags.forEach((item) => {
@@ -49,5 +47,41 @@ export class EditeventComponent {
 
     });
   }
+
+
+ 
+//   updateEvent(event) {
+//     //event_id
+//     this.service.updateEvent(event).subscribe(
+//        data => {
+//          // refresh the list
+//          //go to events page
+//          return true;
+//        },
+//        error => {
+//          console.error("Error saving event!");
+//          return Observable.throw(error);
+//        }
+//     );
+//   }
+ 
+//   deleteEvent(event) {
+//      //get event_id
+//     if (confirm("Are you sure you want to delete " + event.name + "?")) {
+//       this.service.deleteEvent(event_id).subscribe(
+//          data => {
+//            // refresh the list
+//            // go to events page
+//            return true;
+//          },
+//          error => {
+//            console.error("Error deleting event!");
+//            return Observable.throw(error);
+//          }
+//       );
+//     }
+//   }
+
+
 
 }

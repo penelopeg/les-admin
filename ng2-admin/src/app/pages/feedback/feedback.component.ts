@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
-import { ActivitiesService } from './activities.service';
+import { FeedbackService } from './feedback.service';
 import { LocalDataSource } from 'ng2-smart-table';
 
-import 'style-loader!./activities.scss';
+import 'style-loader!./feedback.scss';
 
 @Component({
-  selector: 'activities',
-  templateUrl: 'activities.html'
+  selector: 'feedback',
+  templateUrl: 'feedback.html'
 })
-export class ActivitiesComponent {
+export class FeedbackComponent {
     query: string = '';
 
   settings = {
@@ -31,8 +31,8 @@ export class ActivitiesComponent {
         title: 'ID',
         type: 'number'
       },
-      name: {
-        title: 'Nome da Atividade',
+      question: {
+        title: 'Pergunta',
         type: 'string'
       }
     }
@@ -40,8 +40,8 @@ export class ActivitiesComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(protected service: ActivitiesService) {
-        this.service.getAllTags().subscribe((value) => {
+  constructor(protected service: FeedbackService) {
+        this.service.getFormQuestions().subscribe((value) => {
       this.source.load(JSON.parse(value));
     }, (error) => {
       console.log(error);
@@ -49,7 +49,7 @@ export class ActivitiesComponent {
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Quer mesmo eliminar a atividade?')) {
+    if (window.confirm('Quer mesmo eliminar a pergunta?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();

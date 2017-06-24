@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-// import { AddeventService } from './addevent.service';
+import { AddeventService } from './addevent.service';
+import { ActivatedRoute } from "@angular/router";
 import 'style-loader!../events.scss';
 
 @Component({
@@ -11,26 +12,29 @@ export class AddeventComponent {
   title = '';
   tags = [];
 
-constructor() {
+  constructor(protected service: AddeventService, private _routeParams: ActivatedRoute) {
+    this._routeParams.params.subscribe(params => {
+      this.service.getAllTags().subscribe((value) => {
+        //get all tags
+        this.tags = JSON.parse(value);
+      }, (error) => {
+        console.log(error);
+      });
+    });
+  }
 
-}
-  // constructor(protected service: AddeventService) {
-  //   //get info
-  //   this.service.getInfo().subscribe((value) => {
-  //     this.info = JSON.parse(value)[0].description;
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
 
-  //   //get contact information
-  //   this.service.getContacts().subscribe((value) => {
-  //     var item = JSON.parse(value);
-  //     this.address = item[0].address;
-  //     this.phone = item[0].phone_nr;
-  //     this.email = item[0].email;
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
+  //     createEvent(event) {
+  //   this.service.createEvent(event).subscribe(
+  //      data => {
+  //        // refresh the list
+  //          //return to page evemts
+  //        return true;
+  //      },
+  //      error => {
+  //        console.error("Error saving event!");
+  //        return Observable.throw(error);
+  //      }
+  //   );
   // }
-
 }
