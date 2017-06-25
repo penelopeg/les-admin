@@ -9,7 +9,7 @@ export class FeedbackService {
 
 
   getFormQuestions() {
-    return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/form')
+    return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/form/questions')
     .map((res:Response) => res.json());
   }
 

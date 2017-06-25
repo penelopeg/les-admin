@@ -52,6 +52,7 @@ export const routes: Routes = [
         loadChildren: 'app/pages/modules/edit/editmodules.module#EditmodulesModule'
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'feedbackanswer', loadChildren: 'app/pages/feedbackanswer/feedbackanswer.module#FeedbackanswerModule' },
       { path: 'visits', loadChildren: 'app/pages/visits/visits.module#VisitsModule' },
       { path: 'modules', loadChildren: 'app/pages/modules/modules.module#ModulesModule' },
       { path: 'themes', loadChildren: 'app/pages/themes/themes.module#ThemesModule' },

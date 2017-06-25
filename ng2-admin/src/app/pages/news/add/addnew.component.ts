@@ -14,6 +14,15 @@ export class AddnewComponent {
   selecttags = [];
   publish_time = new Date();
 
+  // public defaultPicture = 'assets/img/theme/no-photo.png';
+  // public profile:any = {
+  //   picture: 'assets/img/app/profile/Nasta.png'
+  // };
+  // public uploaderOptions:NgUploaderOptions = {
+  //   // url: 'http://website.com/upload'
+  //   url: '',
+  // };
+///ng2-admin/src/app/theme/components/baPictureUploader/baPictureUploader.component.ts
 
   constructor(protected service: AddnewService, private _routeParams: ActivatedRoute, private _router: Router) {
     this._routeParams.params.subscribe(params => {

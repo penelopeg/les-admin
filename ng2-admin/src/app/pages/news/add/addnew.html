@@ -16,6 +16,12 @@
           <option *ngFor="let item of tags" [value]="item.id">{{ item.name }}</option>
         </select>
       </div>
+      <!--<div class="form-group">
+      <ba-card title="Picture Uploader" baCardClass="with-scroll">
+        <ba-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></ba-picture-uploader>
+      </ba-card>
+      </div>-->
+
       <button type="submit" class="btn btn-success" [disabled]="!AddNewForm.form.valid">Publicar</button>
     </form>
   </ba-card>

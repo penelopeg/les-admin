@@ -141,6 +141,18 @@ export const PAGES_MENU = [
           }
         }
       },
+            {
+        path: 'feedbackanswer',
+        data: {
+          menu: {
+            title: 'Feedback de Visitas',
+            icon: 'ion-chatbubble-working',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
       {
         path: 'themes',
         data: {
