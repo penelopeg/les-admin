@@ -1,22 +1,26 @@
 <div>
-  <ba-card title="Publicar notícia" baCardClass="with-scroll">
-    <form>
+  <ba-card title="Adicionar Evento" baCardClass="with-scroll">
+    <form (ngSubmit)="onSubmit()" #AddEventForm="ngForm">
       <div class="form-group">
-        <label for="title">Título</label>
-        <input type="text" class="form-control" id="title" placeholder="Título" value="{{ title }}">
+        <label for="name">Título</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" placeholder="Título" value="{{ name }}" required>
       </div>
       <div class="form-group">
-        <label for="content">Corpo da Notícia</label>
-        <textarea class="form-control" id="content" placeholder="Corpo da Notícia">{{ content }}</textarea>
+        <label for="description">Descrição do Evento</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="model.description" placeholder="Descrição do Evento" required>{{ description }}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="e_time">Data do Evento</label>
+        <input type="text" class="form-control" id="e_time" name="e_time" [(ngModel)]="model.e_time" placeholder="Data" value="{{ e_time }}" required>
       </div>
       <!--add tags-->
       <div class="form-group">
         <label for="selecttags">Atividades</label>
-        <select multiple class="form-control" id="selecttags" name="selectedtags">
-          <option *ngFor="let item of tags" value="{{ item.id }}">{{ item.name }}</option>
+        <select multiple class="form-control" id="selecttags" name="selecttags" [(ngModel)]="model.selecttags" required>
+          <option *ngFor="let item of tags" [value]="item.id">{{ item.name }}</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-success">Publicar</button>
+      <button type="submit" class="btn btn-success" [disabled]="!AddEventForm.form.valid">Publicar</button>
     </form>
   </ba-card>
 </div>

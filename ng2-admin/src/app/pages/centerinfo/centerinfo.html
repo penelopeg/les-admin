@@ -1,25 +1,27 @@
 <div>
   <ba-card title="Informação do Centro" baCardClass="with-scroll">
-    <form>
+    <form (ngSubmit)="onSubmit()" #EditInfoForm="ngForm">
       <div class="form-group">
-        <label for="intro">Introdução Histórica</label>
-         <textarea class="form-control" id="intro" placeholder="Introdução">{{ info }}</textarea>
+        <label for="title">Título</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Título" value="{{ title }}" [(ngModel)]="info.title" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Introdução Histórica</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Introdução" [(ngModel)]="info.description" required>{{ description }}</textarea>
       </div>
       <div class="form-group">
         <label for="address">Morada</label>
-        <input type="text" class="form-control" id="address" placeholder="Morada" value="{{ address }}">
+        <input type="text" class="form-control" id="address" name="address" placeholder="Morada" value="{{ address }}" [(ngModel)]="contact.address" required>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Email" value="{{ email }}">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ email }}" [(ngModel)]="contact.email" required>
       </div>
       <div class="form-group">
-        <label for="phone">Telefone</label>
-        <input type="text" class="form-control" id="phone" placeholder="Telefone" value="{{ phone }}">
+        <label for="phone_nr">Telefone</label>
+        <input type="text" class="form-control" id="phone_nr" name="phone_nr" placeholder="Telefone" value="{{ phone_nr }}" [(ngModel)]="contact.phone_nr" required>
       </div>
-      <button type="submit" class="btn btn-success">Guardar</button>
+      <button type="submit" class="btn btn-success" [disabled]="!EditInfoForm.form.valid">Guardar</button>
     </form>
   </ba-card>
 </div>
-
-

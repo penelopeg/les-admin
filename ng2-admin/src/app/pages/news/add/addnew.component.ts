@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-// import { AddnewService } from './addnew.service';
+import { AddnewService } from './addnew.service';
+import { ActivatedRoute, Router } from "@angular/router";
 import 'style-loader!../news.scss';
 
 @Component({
@@ -10,27 +11,31 @@ export class AddnewComponent {
   content = '';
   title = '';
   tags = [];
+  selecttags = [];
+  publish_time = new Date();
 
-constructor() {
 
-}
-  // constructor(protected service: AddnewService) {
-  //   //get info
-  //   this.service.getInfo().subscribe((value) => {
-  //     this.info = JSON.parse(value)[0].description;
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
+  constructor(protected service: AddnewService, private _routeParams: ActivatedRoute, private _router: Router) {
+    this._routeParams.params.subscribe(params => {
+      this.service.getAllTags().subscribe((value) => {
+        //get all tags
+        this.tags = JSON.parse(value);
+      }, (error) => {
+        console.log(error);
+      });
+    });
+  }
+  model = { title: this.title, content: this.content, publish_time: this.publish_time, selecttags: this.selecttags };
+  onSubmit() {
+    this.service.createNews(this.model).subscribe(
+      data => {
+        this._router.navigate(['pages/news']);
+      },
+      error => {
+        console.error("Error saving event!");
+      }
+    );
+  }
 
-  //   //get contact information
-  //   this.service.getContacts().subscribe((value) => {
-  //     var item = JSON.parse(value);
-  //     this.address = item[0].address;
-  //     this.phone = item[0].phone_nr;
-  //     this.email = item[0].email;
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
 
 }

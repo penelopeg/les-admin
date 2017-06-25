@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EditeventService } from './editevent.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { BrowserModule } from '@angular/platform-browser';
 
 import 'style-loader!../events.scss';
 
@@ -11,11 +12,14 @@ import 'style-loader!../events.scss';
 })
 export class EditeventComponent {
   name = '';
-  desc = '';
-  e_time ='';
+  description = '';
+  e_time = '';
   tags = [];
+  selecttags = [];
+  id = '';
+  model = { id: this.id, name: this.name, description: this.description, e_time: this.e_time, selecttags: this.selecttags };
 
-  constructor(protected service: EditeventService, private _routeParams: ActivatedRoute) {
+  constructor(protected service: EditeventService, private _routeParams: ActivatedRoute, private _router: Router) {
     this._routeParams.params.subscribe(params => {
       this.service.getAllTags().subscribe((value) => {
         //get all tags
@@ -23,64 +27,59 @@ export class EditeventComponent {
       }, (error) => {
         console.log(error);
       });
-
       this.service.getEvents(params['id']).subscribe((value) => {
         var item = JSON.parse(value);
-        this.desc = item[0].desc;
+        this.id = params['id'];
+        this.description = item[0].desc;
         this.name = item[0].name;
-        this.e_time = item[0].e_time; 
-         //say which tags are selected
-        var selectedTags = JSON.parse(item[0].tags);
+        this.e_time = item[0].e_time;
+        //say which tags are selected
+        this.selecttags = JSON.parse(item[0].tags);
+        this.model = { id: this.id, name: this.name, description: this.description, e_time: this.e_time, selecttags: this.selecttags };
         this.tags.forEach((item) => {
-          for (var i = 0; i < selectedTags.length; i++) {
-            if (selectedTags[i].id == item.id) {
+          for (var i = 0; i < this.selecttags.length; i++) {
+            if (this.selecttags[i].id == item.id) {
               this.tags[this.tags.indexOf(item)].selected = '1';
               break;
             }
-            else 
+            else
               this.tags[this.tags.indexOf(item)].selected = '0';
           }
         });
+
       }, (error) => {
         console.log(error);
       });
 
     });
+
   }
 
+  onSubmit() {
+    this.service.updateEvent(this.model).subscribe(
+      data => {
+        console.log(data);
+        this._router.navigate(['pages/events']);
+      },
+      error => {
+        console.error("Error saving event!");
+      }
+    );
+  }
 
- 
-//   updateEvent(event) {
-//     //event_id
-//     this.service.updateEvent(event).subscribe(
-//        data => {
-//          // refresh the list
-//          //go to events page
-//          return true;
-//        },
-//        error => {
-//          console.error("Error saving event!");
-//          return Observable.throw(error);
-//        }
-//     );
-//   }
- 
-//   deleteEvent(event) {
-//      //get event_id
-//     if (confirm("Are you sure you want to delete " + event.name + "?")) {
-//       this.service.deleteEvent(event_id).subscribe(
-//          data => {
-//            // refresh the list
-//            // go to events page
-//            return true;
-//          },
-//          error => {
-//            console.error("Error deleting event!");
-//            return Observable.throw(error);
-//          }
-//       );
-//     }
-//   }
+  delete() {
+    if (confirm("Quer mesmo eliminar o evento?")) {
+      this.service.deleteEvent(this.id).subscribe(
+        data => {
+          this._router.navigate(['pages/events']);
+        },
+        error => {
+          console.error("Error deleting event!");
+        }
+      );
+    }
+  }
+
 
 
 

@@ -1,22 +1,22 @@
 <div>
   <ba-card title="Publicar notícia" baCardClass="with-scroll">
-    <form>
+    <form (ngSubmit)="onSubmit()" #AddNewForm="ngForm">
       <div class="form-group">
         <label for="title">Título</label>
-        <input type="text" class="form-control" id="title" placeholder="Título" value="{{ title }}">
+        <input type="text" class="form-control" id="title" placeholder="Título" name="title" value="{{ title }}" [(ngModel)]="model.title">
       </div>
       <div class="form-group">
         <label for="content">Corpo da Notícia</label>
-        <textarea class="form-control" id="content" placeholder="Corpo da Notícia">{{ content }}</textarea>
+        <textarea class="form-control" id="content" placeholder="Corpo da Notícia" name="title" [(ngModel)]="model.content">{{ content }}</textarea>
       </div>
       <!--add tags-->
       <div class="form-group">
         <label for="selecttags">Atividades</label>
-        <select multiple class="form-control" id="selecttags" name="selectedtags">
-          <option *ngFor="let item of tags" value="{{ item.id }}">{{ item.name }}</option>
+        <select multiple class="form-control" id="selecttags" name="selecttags" [(ngModel)]="model.selecttags">
+          <option *ngFor="let item of tags" [value]="item.id">{{ item.name }}</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-success">Publicar</button>
+      <button type="submit" class="btn btn-success" [disabled]="!AddNewForm.form.valid">Publicar</button>
     </form>
   </ba-card>
 </div>

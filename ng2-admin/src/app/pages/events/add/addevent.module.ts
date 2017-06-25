@@ -4,7 +4,7 @@ import { FormsModule as AngularFormsModule } from '@angular/forms';
 import { NgaModule } from '../../../theme/nga.module';
 import { HttpModule } from '@angular/http';
 import { routing }       from './addevent.routing';
-// import { AddeventService } from './addevent.service';
+import { AddeventService } from './addevent.service';
 import { RatingModule } from 'ng2-bootstrap';
 import { AddeventComponent } from './addevent.component';
 
@@ -22,7 +22,7 @@ import { AddeventComponent } from './addevent.component';
   declarations: [
     AddeventComponent
   ],
-  // providers: [AddeventService]
+  providers: [AddeventService]
 })
 export class AddeventModule {
 }

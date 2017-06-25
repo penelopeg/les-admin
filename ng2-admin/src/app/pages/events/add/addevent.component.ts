@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AddeventService } from './addevent.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import 'style-loader!../events.scss';
 
 @Component({
@@ -8,11 +8,13 @@ import 'style-loader!../events.scss';
   templateUrl: './addevent.html',
 })
 export class AddeventComponent {
-  content = '';
-  title = '';
+  description = '';
+  name = '';
   tags = [];
+  selecttags = [];
+  e_time = ""; //2009-01-01 09:00:00
 
-  constructor(protected service: AddeventService, private _routeParams: ActivatedRoute) {
+  constructor(protected service: AddeventService, private _routeParams: ActivatedRoute, private _router: Router) {
     this._routeParams.params.subscribe(params => {
       this.service.getAllTags().subscribe((value) => {
         //get all tags
@@ -22,19 +24,16 @@ export class AddeventComponent {
       });
     });
   }
+  model = { name: this.name, description: this.description, e_time: this.e_time, selecttags: this.selecttags };
+  onSubmit() {
+    this.service.createEvent(this.model).subscribe(
+      data => {
+        this._router.navigate(['pages/events']);
+      },
+      error => {
+        console.error("Error saving event!");
+      }
+    );
+  }
 
-
-  //     createEvent(event) {
-  //   this.service.createEvent(event).subscribe(
-  //      data => {
-  //        // refresh the list
-  //          //return to page evemts
-  //        return true;
-  //      },
-  //      error => {
-  //        console.error("Error saving event!");
-  //        return Observable.throw(error);
-  //      }
-  //   );
-  // }
 }

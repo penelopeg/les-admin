@@ -1,32 +1,32 @@
 <div>
   <ba-card title="Editar Evento" baCardClass="with-scroll">
-    <form method="POST">
+    <form (ngSubmit)="onSubmit()" #EditEventForm="ngForm">
       <div class="form-group">
         <label for="name">Nome do Evento</label>
-        <input type="text" class="form-control" id="name" placeholder="Nome do Evento" value="{{ name }}">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nome do Evento" value="{{ name }}" [(ngModel)]="model.name" required>
       </div>
       <div class="form-group">
-        <label for="desc">Descrição</label>
-        <textarea class="form-control" id="desc" placeholder="Descrição">{{ desc }}</textarea>
+        <label for="description">Descrição do Evento</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="model.description" placeholder="Descrição do Evento" required>{{ description }}</textarea>
       </div>
       <div class="form-group">
         <label for="e_time">Hora do Evento</label>
-        <input type="text" class="form-control" id="e_time" placeholder="Hora do Evento" value="{{ e_time }}">
+        <input type="text" class="form-control" id="e_time" name="e_time" placeholder="Hora do Evento" value="{{ e_time }}" [(ngModel)]="model.e_time" required>
       </div>
       <!--add tags-->
       <div class="form-group">
         <label for="selecttags">Atividades</label>
-        <select multiple class="form-control" id="selecttags" name="selectedtags">
-          <option *ngFor="let item of tags" value="{{ item.id }}" [attr.selected]="item.selected == 1 ? true: null">{{ item.name }}</option>
+        <select multiple class="form-control" id="selecttags" name="selecttags" [(ngModel)]="model.selecttags" required>
+          <option *ngFor="let item of tags" [value]="item.id" [attr.selected]="item.selected == 1 ? true: null" required>{{ item.name }}</option>
         </select>
       </div>
-        <div class="form-group">
-      <ba-card title="Picture Uploader" baCardClass="with-scroll">
-        <ba-picture-uploader></ba-picture-uploader>
-      </ba-card>
-      </div>
-      <button type="submit" class="btn btn-success">Guardar</button>
-      <button class="btn btn-danger">Apagar</button>
+      <!--<div class="form-group">
+        <ba-card title="Picture Uploader" baCardClass="with-scroll">
+          <ba-picture-uploader></ba-picture-uploader>
+        </ba-card>
+      </div>-->
+      <button type="submit" class="btn btn-success" [disabled]="!EditEventForm.form.valid">Guardar</button>
+      <button class="btn btn-danger" (click)="delete()">Apagar</button>
     </form>
 
   </ba-card>

@@ -4,7 +4,7 @@ import { FormsModule as AngularFormsModule } from '@angular/forms';
 import { NgaModule } from '../../../theme/nga.module';
 import { HttpModule } from '@angular/http';
 import { routing }       from './addnew.routing';
-// import { AddnewService } from './addnew.service';
+import { AddnewService } from './addnew.service';
 import { RatingModule } from 'ng2-bootstrap';
 import { AddnewComponent } from './addnew.component';
 
@@ -22,7 +22,7 @@ import { AddnewComponent } from './addnew.component';
   declarations: [
     AddnewComponent
   ],
-  // providers: [AddnewService]
+  providers: [AddnewService]
 })
 export class AddnewModule {
 }

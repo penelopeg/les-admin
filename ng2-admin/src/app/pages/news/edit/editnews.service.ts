@@ -17,4 +17,14 @@ export class EditnewsService {
     .map((res:Response) => res.json());
   }
 
+  updateNews(event) {
+    let body = encodeURIComponent(JSON.stringify(event));
+    console.log(body);
+    return this.http.post('http://ccva.jordao.xyz/MjY2ODU5NDky/news/update/' + body, '').map((res: Response) => res.json());
+  }
+
+  deleteNews(event_id) {
+    return this.http.delete('http://ccva.jordao.xyz/MjY2ODU5NDky/events/news/' + event_id);
+  }
+
 }
