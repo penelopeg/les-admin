@@ -13,20 +13,17 @@ export class ActivitiesService {
     .map((res:Response) => res.json());
   }
 
-  createTag(tag) {
-    let body = JSON.stringify(tag);
-    console.log('http://ccva.jordao.xyz/MjY2ODU5NDky/tags/add/'+body);
+  createTag(event) {
+    let body = encodeURIComponent(JSON.stringify(event));
     return this.http.post('http://ccva.jordao.xyz/MjY2ODU5NDky/tags/add/'+body, '').map((res: Response) => res.json());
   }
 
-  updateTag(tag) {
-    let body = JSON.stringify(tag);
-    console.log('http://ccva.jordao.xyz/MjY2ODU5NDky/tags/update/' + body);
+  updateTag(event) {
+    let body = encodeURIComponent(JSON.stringify(event));
     return this.http.post('http://ccva.jordao.xyz/MjY2ODU5NDky/tags/update/' + body, '').map((res: Response) => res.json());
   }
 
   deleteTag(tag_id) {
-    console.log('http://ccva.jordao.xyz/MjY2ODU5NDky/tags/delete/' + tag_id);
     return this.http.delete('http://ccva.jordao.xyz/MjY2ODU5NDky/tags/delete/' + tag_id);
   }
 

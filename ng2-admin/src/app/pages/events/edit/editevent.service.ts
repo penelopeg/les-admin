@@ -19,12 +19,11 @@ export class EditeventService {
 
 
   updateEvent(event) {
-    let body = JSON.stringify(event);
+    let body = encodeURIComponent(JSON.stringify(event));
     return this.http.post('http://ccva.jordao.xyz/MjY2ODU5NDky/events/update/' + body, '').map((res: Response) => res.json());
   }
 
   deleteEvent(event_id) {
-    console.log('http://ccva.jordao.xyz/MjY2ODU5NDky/events/delete/' + event_id);
     return this.http.delete('http://ccva.jordao.xyz/MjY2ODU5NDky/events/delete/' + event_id);
   }
 

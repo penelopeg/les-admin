@@ -18,7 +18,7 @@ export class AddeventService {
   }
 
    createEvent(event) {
-    let body = JSON.stringify(event);
+    let body = encodeURIComponent(JSON.stringify(event));
     return this.http.post('http://ccva.jordao.xyz/MjY2ODU5NDky/events/add/'+body, '').map((res: Response) => res.json());
   }
   

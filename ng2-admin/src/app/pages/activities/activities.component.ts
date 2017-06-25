@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivitiesService } from './activities.service';
 import { LocalDataSource } from 'ng2-smart-table';
+import { Router} from '@angular/router';
+import * as myGlobals from './../globals';
 
 import 'style-loader!./activities.scss';
 
@@ -48,7 +50,9 @@ export class ActivitiesComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(protected service: ActivitiesService) {
+  constructor(protected service: ActivitiesService, private _router: Router) {
+    // if(myGlobals.loggedin==0)
+    //   this._router.navigate(['login']);
     this.service.getAllTags().subscribe((value) => {
       this.source.load(JSON.parse(value));
     }, (error) => {
@@ -98,7 +102,6 @@ export class ActivitiesComponent {
         event.confirm.reject();
       }
     );
-
   }
 
 }

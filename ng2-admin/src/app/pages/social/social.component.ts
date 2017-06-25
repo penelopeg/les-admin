@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { SocialService } from './social.service';
 import { LocalDataSource } from 'ng2-smart-table';
 
@@ -9,9 +9,13 @@ import 'style-loader!./social.scss';
   templateUrl: 'social.html'
 })
 export class SocialComponent {
-    query: string = '';
+  query: string = '';
 
   settings = {
+    actions: {
+      add: false,
+      delete: false
+    },
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline"></i>',
       createButtonContent: '<i class="ion-checkmark"></i>',
@@ -21,12 +25,19 @@ export class SocialComponent {
       editButtonContent: '<i class="ion-edit"></i>',
       saveButtonContent: '<i class="ion-checkmark"></i>',
       cancelButtonContent: '<i class="ion-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="ion-trash-a"></i>',
       confirmDelete: true
     },
+    mode: 'inline',
     columns: {
+      id: {
+        title: 'Id',
+        type: 'string',
+        editable: false
+      },
       name: {
         title: 'Nome da rede social',
         type: 'string'
@@ -51,11 +62,16 @@ export class SocialComponent {
     });
   }
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Quer mesmo eliminar a rede social?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
+  onSave(event): any {
+    this.service.updateSocial(event.newData).subscribe(
+      data => {
+        console.log(data);
+        event.confirm.resolve();
+      },
+      error => {
+        console.error("Error saving social network!");
+        event.confirm.reject();
+      }
+    );
   }
 }

@@ -11,54 +11,21 @@ import 'style-loader!./news.scss';
 export class NewsComponent {
   query: string = '';
 
-  settings = {
-    add: {
-      addButtonContent: '<i class="ion-ios-plus-outline"></i>',
-      createButtonContent: '<i class="ion-checkmark"></i>',
-      cancelButtonContent: '<i class="ion-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="ion-edit"></i>',
-      saveButtonContent: '<i class="ion-checkmark"></i>',
-      cancelButtonContent: '<i class="ion-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="ion-trash-a"></i>',
-      confirmDelete: true
-    },
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number'
-      },
-      title: {
-        title: 'Título',
-        type: 'string'
-      },
-      content: {
-        title: 'Conteúdo',
-        type: 'string'
-      },
-      publish: {
-        title: 'Data',
-        type: 'string'
-      }
-      //images
-      //news 2 tags
-    }
-  };
-
   source: LocalDataSource = new LocalDataSource();
 
+  tags = '';
   news = [];
   constructor(protected service: NewsService) {
-    // this.service.getNews().subscribe((value) => {
-    //   this.source.load(JSON.parse(value));
-    // }, (error) => {
-    //   console.log(error);
-    // });
     this.service.getNews().subscribe((value) => {
       JSON.parse(value).map((item) => {
+        var tag = JSON.parse(item.tags);
+        var selectedtags = '';
+        if (tag != null) {
+          tag.forEach((val) => {
+            selectedtags = selectedtags.concat(' ' + val.name);
+          });
+        }
+        Object.assign(item, { selectedtags: selectedtags });
         this.news.push(item);
       });
     }, (error) => {

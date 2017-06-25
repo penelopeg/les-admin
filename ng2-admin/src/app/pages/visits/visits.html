@@ -1,0 +1,63 @@
+<div class="widgets">
+
+  <!-- control modal from parent component -->
+  <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" aria-label="Close" (click)="hideChildModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          <h4 class="modal-title">Detalhes da Marcação de Visitas</h4>
+        </div>
+        <div class="modal-body">
+          <p><b>Nome do visitante:</b> {{modalinfo.name}}</p>
+          <p><b>Contacto:</b> {{modalinfo.contact}}</p>
+          <p><b>Email:</b> {{modalinfo.email}}</p>
+          <p><b>Data da Visita:</b> {{modalinfo.visit_date}}</p>
+          <p><b>Tipo de Visita:</b> {{modalinfo.type_table}}</p>
+          <p><b>Mensagem:</b> {{modalinfo.message}}</p>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary confirm-btn" (click)="hideChildModal()">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <ba-card title="Marcações de Visitas" baCardClass="with-scroll">
+      <!--<div class="vertical-scroll">-->
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="table-id">#</th>
+            <th>Nome do Visitante</th>
+            <th>Contacto</th>
+            <th>Email</th>
+            <th>Data de Visita</th>
+            <th>Tipo de Visita</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr *ngFor="let item of visits" (click)="showChildModal(item)">
+            <td class="table-id">{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.contact }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.visit_date }}</td>
+            <td>{{ item.type_table }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!--</div>-->
+    </ba-card>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="widgets">
+
+ <div class="row">
+    <ba-card title="Eventos" baCardClass="with-scroll">
+      <!--<div class="vertical-scroll">-->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="table-id">#</th>
+              <th>Nome</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="link" href="#/pages/projectservice/add"><span class="ion-ios-plus-outline"></span></a></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr *ngFor="let item of services">
+              <td><a class="link" href="#/pages/projectservice/edit/{{item.id}}"><span class="ion-edit"></span></a></td>
+              <td class="table-id">{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.type }}</td>
+            </tr>
+          </tbody>
+        </table>
+      <!--</div>-->
+    </ba-card>
+  </div>
+
+</div>

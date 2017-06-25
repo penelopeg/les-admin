@@ -9,8 +9,15 @@ export class LoginService {
 
 
   login(email, password) {
-    return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/tags')
-    .map((res:Response) => res.json());
+    if (email == 'admin@ccvalg.pt' && password=='admin') {
+      console.log(password);
+      return true;
+    }
+    console.log(password);
+    console.log(email);
+      return false;
+    // return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/tags')
+    // .map((res:Response) => res.json());
   }
 
 }

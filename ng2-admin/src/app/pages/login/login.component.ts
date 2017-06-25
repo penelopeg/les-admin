@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router} from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import * as myGlobals from './../globals';
 
 import 'style-loader!./login.scss';
 
@@ -11,6 +12,7 @@ import 'style-loader!./login.scss';
 })
 export class Login {
 
+  error = '';
   public form: FormGroup;
   public email: AbstractControl;
   public password: AbstractControl;
@@ -28,13 +30,14 @@ export class Login {
   public onSubmit(values: Object): void {
     this.submitted = true;
     if (this.form.valid) {
-      this.service.login(this.email, this.password).subscribe((value) => {
-        //if value = true, route to dashboard
+      if (this.service.login(this.email.value, this.password.value) == true) {
         this._router.navigate(['dashboard']);
+      }
+      else {
+        this.error = 'Email/password incorretos!';
+      }
         //else error
-      }, (error) => {
-        console.log(error);
-      });
+
 
     }
   }

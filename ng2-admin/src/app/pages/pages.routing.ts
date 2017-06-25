@@ -14,7 +14,7 @@ export const routes: Routes = [
     path: 'register',
     loadChildren: 'app/pages/register/register.module#RegisterModule'
   },
-{ path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'pages',
     component: Pages,
@@ -35,8 +35,28 @@ export const routes: Routes = [
         path: 'events/edit/:id',
         loadChildren: 'app/pages/events/edit/editevent.module#EditeventModule'
       },
+      {
+        path: 'projectservice/add',
+        loadChildren: 'app/pages/projectservice/add/addservice.module#AddserviceModule'
+      },
+      {
+        path: 'projectservice/edit/:id',
+        loadChildren: 'app/pages/projectservice/edit/editservice.module#EditserviceModule'
+      },
+      {
+        path: 'modules/add',
+        loadChildren: 'app/pages/modules/add/addmodules.module#AddmodulesModule'
+      },
+      {
+        path: 'modules/edit/:id',
+        loadChildren: 'app/pages/modules/edit/editmodules.module#EditmodulesModule'
+      },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-       { path: 'feedback', loadChildren: 'app/pages/feedback/feedback.module#FeedbackModule' },
+      { path: 'visits', loadChildren: 'app/pages/visits/visits.module#VisitsModule' },
+      { path: 'modules', loadChildren: 'app/pages/modules/modules.module#ModulesModule' },
+      { path: 'themes', loadChildren: 'app/pages/themes/themes.module#ThemesModule' },
+      { path: 'projectservice', loadChildren: 'app/pages/projectservice/projectservice.module#ProjectserviceModule' },
+      { path: 'feedback', loadChildren: 'app/pages/feedback/feedback.module#FeedbackModule' },
       { path: 'social', loadChildren: 'app/pages/social/social.module#SocialModule' },
       { path: 'pricing', loadChildren: 'app/pages/pricing/pricing.module#PricingModule' },
       { path: 'centerinfo', loadChildren: 'app/pages/centerinfo/centerinfo.module#CenterinfoModule' },

@@ -106,7 +106,7 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'dashboard',
+        path: 'projectservice',
         data: {
           menu: {
             title: 'Projetos e Serviços',
@@ -118,19 +118,7 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'dashboard',
-        data: {
-          menu: {
-            title: 'Módulos',
-            icon: 'ion-eye',
-            selected: false,
-            expanded: false,
-            order: 0
-          }
-        }
-      },
-      {
-        path: 'dashboard',
+        path: 'visits',
         data: {
           menu: {
             title: 'Marcação de Visitas',
@@ -147,6 +135,30 @@ export const PAGES_MENU = [
           menu: {
             title: 'Formulário',
             icon: 'ion-chatbox',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'themes',
+        data: {
+          menu: {
+            title: 'Temas',
+            icon: 'ion-lightbulb',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'modules',
+        data: {
+          menu: {
+            title: 'Módulos',
+            icon: 'ion-eye',
             selected: false,
             expanded: false,
             order: 0

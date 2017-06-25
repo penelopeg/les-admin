@@ -5,33 +5,36 @@
       <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
     </ba-card>
   </div>-->
- <div class="row">
+  <div class="row">
     <ba-card title="Eventos" baCardClass="with-scroll">
       <!--<div class="vertical-scroll">-->
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="table-id">#</th>
-              <th>Nome do Evento</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="#/pages/events/add"><span class="ion-ios-plus-outline"></span></a></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr *ngFor="let item of events">
-              <td><a href="#/pages/events/edit/{{item.id}}"><span class="ion-edit"></span></a></td>
-              <td class="table-id">{{ item.id }}</td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.e_time }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="table-id">#</th>
+            <th>Nome do Evento</th>
+            <th>Data</th>
+            <th>Atividades</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a class="link" href="#/pages/events/add"><span class="ion-ios-plus-outline"></span></a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr *ngFor="let item of events">
+            <td><a class="link" href="#/pages/events/edit/{{item.id}}"><span class="ion-edit"></span></a></td>
+            <td class="table-id">{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.e_time }}</td>
+            <td>{{item.selectedtags}}</td>
+          </tr>
+        </tbody>
+      </table>
       <!--</div>-->
     </ba-card>
   </div>

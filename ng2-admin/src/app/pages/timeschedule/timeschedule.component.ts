@@ -12,6 +12,10 @@ export class TimescheduleComponent {
   query: string = '';
 
   settings = {
+    actions: {
+      add: false,
+      delete: false
+    },
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline"></i>',
       createButtonContent: '<i class="ion-checkmark"></i>',
@@ -21,12 +25,18 @@ export class TimescheduleComponent {
       editButtonContent: '<i class="ion-edit"></i>',
       saveButtonContent: '<i class="ion-checkmark"></i>',
       cancelButtonContent: '<i class="ion-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="ion-trash-a"></i>',
-      confirmDelete: true
     },
+    mode: 'inline',
     columns: {
+      id: {
+        title: 'Id',
+        type: 'string',
+        editable: false
+      },
       day: {
         title: 'Dia',
         type: 'string'
@@ -52,11 +62,16 @@ export class TimescheduleComponent {
     });
   }
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Quer mesmo eliminar o horário?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
+  onSave(event): any {
+    this.service.updateSchedule(event.newData).subscribe(
+      data => {
+        console.log(data);
+        event.confirm.resolve();
+      },
+      error => {
+        console.error("Error saving event!");
+        event.confirm.reject();
+      }
+    );
   }
 }

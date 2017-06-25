@@ -12,4 +12,9 @@ export class TimescheduleService {
     return this.http.get('http://ccva.jordao.xyz/MjY2ODU5NDky/schedule')
     .map((res:Response) => res.json());
   }
+
+    updateSchedule(event) {
+    let body = encodeURIComponent(JSON.stringify(event));
+    return this.http.post('http://ccva.jordao.xyz/MjY2ODU5NDky/schedule/update/' + body, '').map((res: Response) => res.json());
+  }
 }

@@ -3,16 +3,16 @@
     <form (ngSubmit)="onSubmit()" #AddNewForm="ngForm">
       <div class="form-group">
         <label for="title">Título</label>
-        <input type="text" class="form-control" id="title" placeholder="Título" name="title" value="{{ title }}" [(ngModel)]="model.title">
+        <input type="text" class="form-control" id="title" placeholder="Título" name="title" value="{{ title }}" [(ngModel)]="model.title" required>
       </div>
       <div class="form-group">
         <label for="content">Corpo da Notícia</label>
-        <textarea class="form-control" id="content" placeholder="Corpo da Notícia" name="title" [(ngModel)]="model.content">{{ content }}</textarea>
+        <textarea class="form-control" id="content" placeholder="Corpo da Notícia" name="title" [(ngModel)]="model.content" required>{{ content }}</textarea>
       </div>
       <!--add tags-->
       <div class="form-group">
         <label for="selecttags">Atividades</label>
-        <select multiple class="form-control" id="selecttags" name="selecttags" [(ngModel)]="model.selecttags">
+        <select multiple class="form-control" id="selecttags" name="selecttags" [(ngModel)]="model.selecttags" required>
           <option *ngFor="let item of tags" [value]="item.id">{{ item.name }}</option>
         </select>
       </div>

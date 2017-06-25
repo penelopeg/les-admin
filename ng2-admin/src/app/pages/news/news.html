@@ -16,20 +16,23 @@
               <th class="table-id">#</th>
               <th>Título</th>
               <th>Data publicada</th>
+              <td>Atividades</td>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><a href="#/pages/news/add"><span class="ion-ios-plus-outline"></span></a></td>
+              <td><a class="link" href="#/pages/news/add"><span class="ion-ios-plus-outline"></span></a></td>
+              <td></td>
               <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr *ngFor="let item of news">
-              <td><a href="#/pages/news/edit/{{item.id}}"><span class="ion-edit"></span></a></td>
+              <td><a class="link" href="#/pages/news/edit/{{item.id}}"><span class="ion-edit"></span></a></td>
               <td class="table-id">{{ item.id }}</td>
               <td>{{ item.title }}</td>
               <td>{{ item.publish }}</td>
+              <td>{{item.selectedtags}}</td>
             </tr>
           </tbody>
         </table>
